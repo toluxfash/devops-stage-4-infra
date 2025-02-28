@@ -1,0 +1,11 @@
+---
+- name: Clone the application repository
+  git:
+    repo: "https://github.com/toluxfash/DevOps-Stage-4.git"
+    dest: "/home/ubuntu/DevOps-Stage-4"
+    clone: yes
+    update: yes
+
+- name: Run Docker Compose
+  become: yes
+  command: docker compose -f /home/ubuntu/DevOps-Stage-4/docker-compose.yml up -d
