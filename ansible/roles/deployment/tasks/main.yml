@@ -8,4 +8,4 @@
 
 - name: Run Docker Compose
   become: yes
-  command: docker compose -f /home/ubuntu/DevOps-Stage-4/docker-compose.yml up -d
+  command: docker compose -f /home/ubuntu/DevOps-Stage-4/docker-compose.yml up --build -d

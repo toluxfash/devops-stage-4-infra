@@ -53,3 +53,11 @@ resource "aws_security_group" "app_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "local_file" "ansible_inventory" {
+  filename = "${path.module}/ansible/inventory/hosts.ini"
+  content  = <<-EOT
+    [web]
+    ${aws_instance.app_server.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/${var.key_name}.pem
+  EOT
+}
